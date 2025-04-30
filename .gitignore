@@ -1,0 +1,19 @@
+# Ignorar arquivos de ambiente
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# IDEs comuns
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.log
+*.tmp
+.DS_Store
+
+# Saídas de testes e builds
+dist/
+build/
+*.egg-info/
