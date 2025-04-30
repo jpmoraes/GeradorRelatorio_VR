@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação da Atividade Imersiva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <img src="asset/semana-s.svg" alt="Imagem de fundo do header">
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Receba sua avaliação</h2>
+        <form>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">1. Como você avaliaria sua experiência geral com a atividade imersiva usando
+                    os óculos VR?</label>
+                <div class="range-labels">
+                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="5" step="1">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">2. O uso dos óculos VR contribuiu para o seu engajamento e imersão na
+                    atividade?</label>
+                <div class="range-labels">
+                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="5" step="1">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">3. Quanto você ficou de expectativa em relação ao feedback oferecido pela
+                    inteligência artificial durante a atividade?</label>
+                <div class="range-labels">
+                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="5" step="1">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">4. Você se sentiu motivado(a) a continuar aprendendo ou explorando mais o
+                    conteúdo após a experiência?</label>
+                <div class="range-labels">
+                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="5" step="1">
+            </div>
+            <div class="mb-4">
+                <label class="form-label">5. Você teria interesse em participar de outras atividades semelhantes no
+                    futuro?</label>
+                <div class="range-labels">
+                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="5" step="1">
+            </div>
+
+            <div class="mb-3">
+                <label for="aspectos" class="form-label">6. Quais aspectos da experiência você mais gostou?</label>
+                <textarea class="form-control" id="aspectos" rows="3"></textarea>
+            </div>
+
+
+            <button type="button" class="btn btn-primary" onclick="enviarAvaliacao()">Enviar Avaliação</button>
+        </form>
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
