@@ -1,11 +1,13 @@
 import requests
 from flask import Flask, request, jsonify, send_from_directory
 from model.Avaliacao import avaliacao
+from controller.email_route import email_bp
 
 app = Flask(__name__)
 
 #Registrando o Blueprint no Flask com um prefixo '/model'
-app.register_blueprint(avaliacao, url_prefix='/model')
+app.register_blueprint(avaliacao, url_prefix='/avaliacao')
+app.register_blueprint(email_bp, url_prefix='/avaliacao')
 
 @app.route('/')
 def index():

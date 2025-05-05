@@ -45,7 +45,7 @@ def transcrever_audio(caminho_audio):
 # Envia mensagem ao Gemini
 def enviar_para_gemini(mensagem):
     print("Gerando resposta com Gemini...")
-    mensagem = "Faça uma avaliação simples dos pontos positivos e negativos sobre a resposta dada em uma entrevista de emprego. Retornar apenas o feedback da seguinte mensagem: " + mensagem
+    mensagem = "Faça uma avaliação simples dos pontos positivos e negativos sobre a resposta dada em uma entrevista de emprego. Retorne apenas o feedback sem formtaçaõ doi texto da seguinte mensagem: " + mensagem
     try:
         resposta = modelo.generate_content(
             mensagem,

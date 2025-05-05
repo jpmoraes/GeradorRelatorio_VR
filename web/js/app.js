@@ -7,7 +7,7 @@ function enviarAvaliacao() {
     const contribuicao_engajamento = parseInt(document.querySelector('input[name="contribuicao_engajamento"]:checked')?.value || 0);
     const expectativa_feedback = parseInt(document.querySelector('input[name="expectativa_feedback"]:checked')?.value || 0);
     const motivacao_aprendizado = parseInt(document.querySelector('input[name="motivacao_aprendizado"]:checked')?.value || 0);
-    const aspectos_mais_gostou = document.getElementById("aspectos_mais_gostou").value;
+    const aspectos_mais_gostou = document.getElementById("aspectos").value;
     const interesse_futuro = parseInt(document.querySelector('input[name="interesse_futuro"]:checked')?.value || 0);
 
     const dados = {
@@ -21,7 +21,7 @@ function enviarAvaliacao() {
         interesse_futuro
     };
 
-    fetch("http://localhost:5000/avaliacao/inserir", {
+    fetch("/avaliacao/inserir", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -34,7 +34,7 @@ function enviarAvaliacao() {
         console.log(data);
 
         // Enviar e-mail com nome e email
-        fetch("http://localhost:5000/enviar-email", {
+        fetch("/avaliacao/enviar-email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,6 +47,7 @@ function enviarAvaliacao() {
         .then(response => response.json())
         .then(emailResponse => {
             console.log("E-mail enviado:", emailResponse);
+            window.location.reload()
         })
         .catch(error => {
             console.error("Erro ao enviar o e-mail:", error);

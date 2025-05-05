@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from enviar_email import enviar_email
+from controller.enviar_email import enviar_email
 
 email_bp = Blueprint('email', __name__)
 
@@ -14,8 +14,8 @@ def enviar_email_route():
 
     try:
         assunto = "Documentos Gerados"
-        corpo = f"Olá {nome}, segue o documento gerado em anexo. Obrigado por participar da atividade imersiva!"
-        anexo_path = "modelo.docx"
+        corpo = f"Olá {nome}, segue o documento de avaliação em anexo. Obrigado por participar da atividade imersiva!"
+        anexo_path = "resultado.pdf"
         enviar_email(email, assunto, corpo, anexo_path)
         return jsonify({"message": "E-mail enviado com sucesso."}), 200
     except Exception as e:

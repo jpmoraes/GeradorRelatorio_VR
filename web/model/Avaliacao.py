@@ -11,7 +11,7 @@ def conectar_db():
     return conn
 
 # Rota para inserir dados da avaliação
-@avaliacao.route('/avaliacao', methods=['POST'])
+@avaliacao.route('/inserir', methods=['POST'])
 def inserir_avaliacao():
     dados = request.json
 
