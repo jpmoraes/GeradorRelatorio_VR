@@ -3,13 +3,14 @@ function enviarAvaliacao() {
     const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
 
-    const experiencia_geral = parseInt(document.querySelector('input[name="experiencia_geral"]:checked')?.value || 0);
-    const contribuicao_engajamento = parseInt(document.querySelector('input[name="contribuicao_engajamento"]:checked')?.value || 0);
-    const expectativa_feedback = parseInt(document.querySelector('input[name="expectativa_feedback"]:checked')?.value || 0);
-    const motivacao_aprendizado = parseInt(document.querySelector('input[name="motivacao_aprendizado"]:checked')?.value || 0);
+    const experiencia_geral = parseInt(document.querySelector('input[name="experiencia_geral"]').value);
+    const contribuicao_engajamento = parseInt(document.querySelector('input[name="contribuicao_engajamento"]').value);
+    const expectativa_feedback = parseInt(document.querySelector('input[name="expectativa_feedback"]').value);
+    const motivacao_aprendizado = parseInt(document.querySelector('input[name="motivacao_aprendizado"]').value);
+    const interesse_futuro = parseInt(document.querySelector('input[name="interesse_futuro"]').value);
     const aspectos_mais_gostou = document.getElementById("aspectos").value;
-    const interesse_futuro = parseInt(document.querySelector('input[name="interesse_futuro"]:checked')?.value || 0);
 
+    console.log(experiencia_geral)
     const dados = {
         nome,
         email,
