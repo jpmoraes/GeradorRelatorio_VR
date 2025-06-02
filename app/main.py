@@ -7,6 +7,7 @@ from docx import Document
 from docx2pdf import convert
 from dotenv import load_dotenv
 import os
+from flask import Blueprint, request, jsonify
 
 # Carregar as variáveis de ambiente do arquivo .env
 load_dotenv()
@@ -15,6 +16,8 @@ load_dotenv()
 api_keyEnv = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=api_keyEnv)
 modelo = genai.GenerativeModel("gemini-2.0-flash")
+
+feedbackia = Blueprint('feedbackia', __name__)
 
 
 # Função para gravar áudio
@@ -87,6 +90,7 @@ def montar_documento(resposta):
     doc.save(destino_path)
     return destino_path
 
+@feedbackia.route('/feedbackia', methods=['GET'])
 # Função principal
 def main():
     arquivo_audio = gravar_audio()
@@ -106,10 +110,9 @@ def main():
         
         print(f"Documento preenchido salvo em: {preenchido}")
         print(f"PDF gerado com sucesso em: {pdf_final}")
+        
+        return "gerado com sucesso"
     finally:
         if os.path.exists(arquivo_audio):
             os.remove(arquivo_audio)
-
-
-if __name__ == "__main__":
-    main()
+            return "gerado sem sucesso"

@@ -4,6 +4,7 @@ from model.Avaliacao import avaliacao
 from controller.email_route import email_bp
 from flask_cors import CORS
 import os
+from main import feedbackia
 
 # Criação do app Flask
 app = Flask(__name__, static_folder="static")
@@ -12,6 +13,7 @@ CORS(app)  # Libera CORS para todas as rotas
 # Registro de blueprints
 app.register_blueprint(avaliacao, url_prefix='/avaliacao')
 app.register_blueprint(email_bp, url_prefix='/avaliacao')
+app.register_blueprint(feedbackia)
 
 # Rota principal – serve a entrevista
 @app.route('/')
