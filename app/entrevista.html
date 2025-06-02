@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vídeo 360 com A-Frame</title>
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: black; }
+  </style>
+</head>
+<body>
+  <!-- REMOVIDO 'embedded' -->
+  <a-scene vr-mode-ui="enabled: true">
+    <a-assets>
+      <video 
+        id="video360"
+        preload="auto"
+        crossorigin="anonymous"
+        webkit-playsinline
+        playsinline
+        muted
+      >
+        <source src="asset/Entrevista_João_360.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+      </video>
+    </a-assets>
+
+    <a-videosphere src="#video360"></a-videosphere>
+    <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+  </a-scene>
+
+  <script>
+    const video = document.getElementById('video360');
+    let checou24 = false;
+
+    document.body.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().then(() => {
+          console.log("Vídeo iniciado com sucesso.");
+        }).catch(err => {
+          console.error("Erro ao iniciar vídeo:", err);
+        });
+      }
+    }, { once: true });
+
+    video.addEventListener('timeupdate', () => {
+      if (!checou24 && video.currentTime >= 24) {
+        checou24 = true;
+        console.log("Chegou em 00:24! Enviando requisição para Flask...");
+
+        fetch('/rota-flask', { method: 'POST' })
+          .then(res => res.ok ? res.text() : Promise.reject("Erro"))
+          .then(texto => console.log("Resposta Flask:", texto))
+          .catch(err => console.error("Erro na requisição:", err));
+      }
+    });
+  </script>
+</body>
+</html>
