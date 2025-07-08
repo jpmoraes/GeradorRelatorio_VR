@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, Response
 from model.Avaliacao import avaliacao
 from controller.email_route import email_bp
 from flask_cors import CORS
@@ -52,7 +52,8 @@ def acao_24_segundos():
     print("Requisição recebida aos 24 segundos!")
     return jsonify({"mensagem": "Requisição recebida com sucesso!"}), 200
 
+
 # Executa o servidor
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
