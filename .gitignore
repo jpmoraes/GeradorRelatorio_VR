@@ -4,6 +4,7 @@
 __pycache__/
 *.pyc
 
+app/static/asset/
 # IDEs comuns
 .vscode/
 .idea/

@@ -53,7 +53,10 @@ def enviar_para_gemini(mensagem):
         resposta = modelo.generate_content(
             mensagem,
             generation_config={
-                "max_output_tokens": 100
+                 "max_output_tokens": 100,
+                 "temperature": 0,
+                 "top_k": 5,
+                 "top_p": 0.9,          
             }
         )
         return resposta.text
