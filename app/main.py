@@ -15,7 +15,7 @@ load_dotenv()
 #Configurar Gemini
 api_keyEnv = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=api_keyEnv)
-modelo = genai.GenerativeModel("gemini-2.0-flash")
+modelo = genai.GenerativeModel("gemini-2.5-flash-lite")
 
 feedbackia = Blueprint('feedbackia', __name__)
 
@@ -53,9 +53,9 @@ def enviar_para_gemini(mensagem):
         resposta = modelo.generate_content(
             mensagem,
             generation_config={
-                 "max_output_tokens": 100,
+                 "max_output_tokens": 160,
                  "temperature": 0,
-                 "top_k": 5,
+                 "top_k": 0,
                  "top_p": 0.9,          
             }
         )
